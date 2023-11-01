@@ -29,3 +29,6 @@ let dict = [1: "one", 2: "two", 3: "three"]
 print(Mirror(reflecting: dict).description) //слабо понял пока для чего этот Mirror нужен
 Mirror(reflecting: ErrorTuple).children.count
 
+//Создать пустой тюпл
+let EmptyTuple = ()
+
