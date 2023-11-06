@@ -72,8 +72,15 @@ func SquareCircle(r: Double) -> Double {
 SquareCircle(r: 1)
 
 //Создайте Dictionary, с именем ученика(цы), где ключ name и score, а значение дата, когда человек получил такую оценку
+// Трудно понять что требуется, смысл такого дневника, если получение одинаковой оценки по одному и тому же предмету будет перетирать предыдующую дату, мб лучше было бы сделать ключом дату, а значение все оценки которые он получил в эту дату
 
-var AsukaDict = [(String, Int): String]()
-AsukaDict[("Math", 100)] = "23.03.2023"
-AsukaDict[("Rus", 100)] = "23.04.2023"
-//доделаю
+//var AsukaDict: [(name: String, score: Int): String] = [:]
+//AsukaDict[("Math", 100)] = "23.03.2023"
+//Так не работает
+
+var AsukaDict: [String: String] = [:]
+AsukaDict["Math, 100"] = "21/05/2023"
+AsukaDict["Rus, 96"] = "22/06/2023"
+AsukaDict["Rus, 95"] = "22/06/2023"
+
+
