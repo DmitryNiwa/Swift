@@ -34,6 +34,20 @@ for i in 1...n {
         print("\(i) times \(j) is a \(i*j)")
     }
 }
+//А попробуй аналогичный обход по циклу написать, только через forEach
+var arrayOfInt:[Int] = []
+for i in 1...n {
+    arrayOfInt.append(i)
+}
+
+arrayOfInt.forEach { i in
+    arrayOfInt.forEach { j in
+        print("\(i) times \(j) is a \(i*j)vvvvv")
+    }
+}
+
+
+
 //Если str1 является Double по типу, то выводит соответствующую строку, если нет, то другую
 if str1 is Double {
     print("str1 is Double")
@@ -41,3 +55,5 @@ if str1 is Double {
 else {
     print("str1 is not a Double")
 }
+
+

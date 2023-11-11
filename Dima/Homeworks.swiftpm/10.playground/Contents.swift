@@ -77,3 +77,13 @@ func EmptyArraysFulfilling(StringArray: [String], NumberArray: [Int]) {
 }
 
 EmptyArraysFulfilling(StringArray: [], NumberArray: [1])
+
+
+//А попробуй создать массив из любых элементов
+//и вывести на печать все эти элементы
+
+let arr:[Any] = [1, 2.0, "Frida", true, (1, 23.0), ["key1": 1, "key2": 2]]
+
+for i in arr {
+    print(i)
+}

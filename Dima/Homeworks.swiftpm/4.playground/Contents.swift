@@ -6,7 +6,7 @@ var array = [String]()
 array.insert("0", at: 0)
 //print(array)
 
-let MoneyArray: [Int] = [100, 100, 50, 20, 50, 10, 1, 20, 100, 50, 50, 1, 1, 1, 10]
+let MoneyArray: [Int] = [100, 100, 50, 20, 50, 10, 1, 20, 100, 50, 50, 1, 1, 1, 10, -110]
 
 
 
@@ -14,7 +14,9 @@ let MoneyArray: [Int] = [100, 100, 50, 20, 50, 10, 1, 20, 100, 50, 50, 1, 1, 1, 
 func MoneySum(Array: [Int]) -> Int {
     var sum: Int = 0
     for i in Array {
-        sum += i
+        if i > 0 {
+            sum += i
+        }
     }
     return sum
 }
@@ -78,3 +80,26 @@ func DaysFromNewYear(month: Int, day: Int) -> Int {
 
 DaysFromNewYear(month: 4, day: 15) //105 дней, проверено, найс
 DaysFromNewYear(month: 13, day: 15) // ошибка ввода, найс
+
+
+
+//А давай сделаем enum по месяцам
+//и функцию, которая будет получать эту enum и отдавать количество дней
+
+enum months {
+    case january, february, march, april, may, june, july, august, september, october, november, december
+}
+let august = months.august
+func HowManyDaysInMonth (enumMonth: months) -> String {
+    var days = String()
+    switch enumMonth {
+    case .january, .march, .may, .july, .august, .october, .december:
+        days = "31 день"
+    case .february:
+        days = "28 дней"
+    case .april, .june, .september, .november:
+        days = "30 дней"
+    }
+    return "В этом месяце " + days
+}
+print (HowManyDaysInMonth(enumMonth: august))

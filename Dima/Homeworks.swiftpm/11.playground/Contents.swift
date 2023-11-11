@@ -17,23 +17,23 @@ Artoria = .Saber
 let Zhieldere = SpiritClass.Caster
 
 enum Weapon {
-    case Name (String)
-    case Damage (Int)
-    case Weight (Double)
-    enum Size {
-        case OneHanded
-        case TwoHanded
+    case sword
+    case halberd
+    case bow
+    enum axe {
+        case big
+        case normal
     }
 }
-let BigSwordSize = Weapon.Size.TwoHanded
+let BigSwordSize = Weapon.axe.big
 
-enum WorkerProfile {
-    case name (String)
-    case age (Int)
-    enum gender {
-        case male,female
+enum WorkerProfession {
+    case lawer
+    case doctor
+    enum engineer {
+        case info, mech, bio
     }
-    case exp (Int)
+    case support
 }
 
 //Создать enum со всеми цветами радуги

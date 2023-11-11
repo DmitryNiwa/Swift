@@ -58,4 +58,32 @@ var STriangle: Double = sqrt(p * (p - a) * (p - b) * (p - c))
 // Площадь квадрата со стороной а
 var SSquare = pow(a, 2)
 
+//Напиши плиз функцию сложения чисел, которые на вход принимают String (тебе нужно будет внутри функции сконверить этот string в число)
+//А если не получается в число сконверить, тогда nil возвращать
 
+func SumOfTwoStringInt (_ s1: String, _ s2: String) -> Int? {
+    let int1: Int? = Int(s1)
+    let int2: Int? = Int(s2)
+    if let int1notnil = int1, let int2notnil = int2 {
+        let sum = int1notnil + int2notnil
+        return sum
+    } else {
+        return nil
+    }
+}
+
+SumOfTwoStringInt("2dfsd", "2d3")
+
+//Давай метод напишем, куда принимаем 3 числа, а на выходе отдаем площадь
+//Площадь треугольника по формуле Герона
+func SquareOfTriangle (_ a: Double, _ b: Double, _ c: Double) -> Double? {
+    if ((a + b) <= c || (a + c) <= b) || ((b + c) <= a) {
+        print("Такого треугольника не существует")
+        return nil
+    } else {
+        let p = a + b + c
+        return sqrt(p * (p - a) * (p - b) * (p - c))
+    }
+}
+
+SquareOfTriangle(2, 3, 2)

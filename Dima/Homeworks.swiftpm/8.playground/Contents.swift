@@ -11,7 +11,7 @@ for i in 1...200 {
             break
         }
     }
-    if breakFlag == true {
+    if breakFlag {
         break
     }
 }
@@ -65,6 +65,10 @@ for i in str {
 }
 for (x,y) in klads {
     print("В подъезде лежит дверь, в обшивке слева: \(x), \(y)")
+}
+//forEach не хватает. давай допишем
+klads.forEach {
+    print("x = \($0.0), y = \($0.1)")
 }
 
 //В switch и отдельно в if создать систему оценивания школьников по 12 бальной системе и и высказывать через print мнение

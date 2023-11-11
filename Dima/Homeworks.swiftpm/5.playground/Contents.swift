@@ -27,6 +27,14 @@ for (key,value) in dictMonthesEng {
     print("\(key)-ый месяц - \(value)")
 }
 
+//А давай еще напишем код, который будет по этому словарю проходить, и создавать обратный ему словарь
+var dictMonthesEngReverse = [String: Int]()
+dictMonthesEng.forEach { key, value in
+    dictMonthesEngReverse[value] = key
+}
+print (dictMonthesEngReverse)
+
+
 
 //Грустно, что распечатывается в консоль не в том порядке, в котором лежат в словаре
 

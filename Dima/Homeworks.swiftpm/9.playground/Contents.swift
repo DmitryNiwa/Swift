@@ -9,10 +9,16 @@ func DontEnter() {
 DontEnter()
 
 // Принимает, но не возвращает
+//А давай, если имя Дима, то будем писать, тебе сюда можно, иначе будем писать Тебе сюда нельзя)
 func DontEnterBoy( _ name: String) {
-    print("Тебе сюда нельзя \(name)")
+    if name == "Дима" {
+        print ("Тебе сюда можно")
+    } else {
+        print("Тебе сюда нельзя \(name)")
+    }
 }
 DontEnterBoy("Степа")
+DontEnterBoy("Дима")
 
 //И принимает и возвращает
 func HiMark(_ times: Int) -> String {
@@ -44,6 +50,20 @@ AddStudent(info: ("Kenske", "Student", 80))
 for i in Journal {
     print("Name = \(i.0), Profession = \(i.1), Grade = \(i.2)")
 }
+
+//А давай это напишем на структуре
+//Например, название будет Person и дальше параметры нужные
+struct Person {
+    var name = String()
+    var profession = String()
+    var score = UInt()
+}
+let sinji = Person(name: "Sinji", profession: "Pilot", score: 80)
+let asuka = Person(name: "Asuka", profession: "Pilot", score: 95)
+let kaoru = Person(name: "Kaoru", profession: "Angel", score: 999)
+
+kaoru.profession
+asuka.score
 
 //Создать функцию которая принимает имя и фамилию, и возвращает имя + фамилию в одной строке, потом пройтись по массиву с именем и фамилией и распечатать скрепленные имен и фамилия вместе в консоль
 var spisok = ["Asuka", "Langley", "Rei", "Ayanami", "Shinji", "Ikari", "Kaoru", "Nagisa"]
