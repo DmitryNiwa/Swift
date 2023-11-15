@@ -62,7 +62,7 @@ class Car {
     
     //Проверяем, что машина еще на ходу с помощью приватного метода, чтобы его нельзя было вызвать через экземплар классаё
     private func checkIsAlive() -> Bool {
-        if !isAlive {
+        guard isAlive else {
             print("Машина \(name) разбита")
             return false
         }
@@ -120,14 +120,18 @@ pupilsArray.append(pupil3)
 pupilsArray.append(pupil4) //длинновато получилось и тупо
 
 class School {
-    func studentSorting (pupils: [Pupils]) -> [Pupils] {
-        var pupilsArray = pupils
-        pupilsArray.sort(by: {$1.Score < $0.Score})
-        return pupilsArray
+    var pupilsArray: [Pupils]
+    init (pupilsArray: [Pupils]) {
+        self.pupilsArray = pupilsArray
+    }
+    func studentSortedByRating () -> [Pupils] {
+        var pupilsArrayIn = self.pupilsArray
+        pupilsArrayIn.sort(by: {$1.Score < $0.Score})
+        return pupilsArrayIn
     }
 }
-let school = School()
-var sortedPupils = school.studentSorting(pupils: pupilsArray)
+let school = School(pupilsArray: pupilsArray)
+var sortedPupils = school.studentSortedByRating()
 
 print(sortedPupils) //Какая-то фигня выводится перед каждым элементом __lldb_expr_103.
 

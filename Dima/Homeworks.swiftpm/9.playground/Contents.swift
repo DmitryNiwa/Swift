@@ -10,15 +10,17 @@ DontEnter()
 
 // Принимает, но не возвращает
 //А давай, если имя Дима, то будем писать, тебе сюда можно, иначе будем писать Тебе сюда нельзя)
-func DontEnterBoy( _ name: String) {
-    if name == "Дима" {
+func DontEnterBoy( _ name: String, exceptions: [String]) {
+    if exceptions.contains(name) {
         print ("Тебе сюда можно")
     } else {
         print("Тебе сюда нельзя \(name)")
     }
 }
-DontEnterBoy("Степа")
-DontEnterBoy("Дима")
+let exception = ["Дима", "Сергей"]
+DontEnterBoy("Степа", exceptions: exception)
+DontEnterBoy("Сергей", exceptions: exception)
+DontEnterBoy("Дима", exceptions: exception)
 
 //И принимает и возвращает
 func HiMark(_ times: Int) -> String {
@@ -56,13 +58,17 @@ for i in Journal {
 struct Person {
     var name = String()
     var profession = String()
-    var score = UInt()
+    var score = 0
+    init(name: String = "NoNam", profession: String = "idk") {
+        self.name = name
+        self.profession = profession
+    }
 }
-let sinji = Person(name: "Sinji", profession: "Pilot", score: 80)
-let asuka = Person(name: "Asuka", profession: "Pilot", score: 95)
-let kaoru = Person(name: "Kaoru", profession: "Angel", score: 999)
+var sinji = Person(name: "Sinji", profession: "Pilot")
+var asuka = Person(name: "Asuka", profession: "Pilot")
+var kaoru = Person(name: "Kaoru", profession: "Angel")
 
-kaoru.profession
+kaoru.score = 999
 asuka.score
 
 //Создать функцию которая принимает имя и фамилию, и возвращает имя + фамилию в одной строке, потом пройтись по массиву с именем и фамилией и распечатать скрепленные имен и фамилия вместе в консоль
