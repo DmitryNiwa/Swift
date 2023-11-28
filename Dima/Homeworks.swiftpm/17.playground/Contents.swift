@@ -4,7 +4,7 @@ import UIKit
 //Описать несколько структур – любой легковой автомобиль и любой грузовик
 //Структуры должны содержать марку авто (можно через enum 5-6 марок автомобилей сделать), год выпуска, объем багажника / кузова, запущен ли двигатель
 
-enum сarBrands {
+enum СarBrands {
     case mercedes
     case audi
     case volktswagen
@@ -34,7 +34,7 @@ enum ActionType {
 }
 
 struct Car {
-    var carBrand: сarBrands
+    var carBrand: СarBrands
     var year: Int
     var windowsIsOpen: Bool
     var engineIsRunning: Bool
@@ -78,7 +78,7 @@ struct Car {
 }
 
 struct Truck {
-    var carBrand: сarBrands
+    var carBrand: СarBrands
     var year: Int
     var currentVolumeOfTruck: Double
     var maxVolumeOfTruck: Double
