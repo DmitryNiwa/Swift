@@ -66,7 +66,7 @@ let cook = Cook(name: "Sam", height: 180, weight: 80, gender: "M")
 let manager = Manager(name: "Bob", height: 190, weight: 86, gender: "M")
 let grapler = Grapler(name: "Stella", height: 168, weight: 76, gender: "F")
 
-var array = [cook, manager, grapler]
+var array:[People] = [cook, manager, grapler] //явно указал тип
 
 //В цикле “for in” пройти по всем элементам массива и вывести в консоль все характеристики каждого объекта (имя, рост и тд) и у каждого вызвать метод "say(говорит)".
 for i in array {

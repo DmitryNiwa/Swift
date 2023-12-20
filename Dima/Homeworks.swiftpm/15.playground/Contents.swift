@@ -13,14 +13,25 @@ class Family {
     }
     subscript (index: Int) -> String? {
         get {
-            print("Ребенок с индексом \(index) - это \(children[index])")
-            return children[index]
+            if index == 0 {
+                print(mom)
+                return mom
+            } else if index == 1 {
+                print(dad)
+                return dad
+            }
+            if index >= 2 {
+                print("Ребенок с индексом \(index - 2) - это \(children[index - 2])")
+                return children[index - 2]
+            } else {
+                return nil
+            }
         }
     }
 }
 
 let myFam = Family(mom: "Mama", dad: "Papa", children: ["John", "Stan", "Leibniz"])
-myFam[1]
+myFam[4]
 
 
 
@@ -70,6 +81,7 @@ myName["Dima"]
 enum Gender {
     case male
     case female
+    case custom (String)
 }
 
 class Human {
@@ -81,7 +93,7 @@ class Human {
             return name + " " + String(age) + " "
         }
     }
-    init(name: String, age: Int, gender: Gender) {
+    init(name: String, age: Int, gender: Gender = .male) {
         self.name = name
         self.age = age
         self.gender = gender
@@ -94,18 +106,23 @@ class Human {
     func changeName(newName: String) {
         self.name = newName
     }
+    func changeGender (newGender: Gender) {
+        self.gender = newGender
+    }
 }
-
+var hum = Human(name: "Humorc", age: 40, gender: .custom("Smorc"))
+hum.changeGender(newGender: .male)
+hum.gender
 
 //Создать ещё 2 класса которые наследуются от класса человек и переопределить методы и свойства
 class HumanBot: Human {
     override var fulProfile: String {
         get {
-            return "Бот"
+            "Бот"
         }
     }
-    init(name: String, age: Int) {
-        super.init(name: name, age: age, gender: .male) // пришлось передать какой нибудь гендер
+    override init(name: String, age: Int, gender: Gender = .female) { //оверрайдим из-за переопределения гендера по умолчанию
+        super.init(name: name, age: age, gender: gender) // пришлось передать какой нибудь гендер
     }
     override func changeName(newName: String) {
         print("Роботам запрещено менять имя")
@@ -116,7 +133,7 @@ class HumanBot: Human {
 class Alien: Human {
     override var fulProfile: String {
         get {
-            return "А тебя это бать не должно"
+            "А тебя это бать не должно"
         }
     }
     init(name: String, gender: Gender) {
@@ -128,7 +145,7 @@ class Alien: Human {
 
 }
 
-var myBot = HumanBot(name: "R2D2", age: 230)
+var myBot = HumanBot(name: "R2D2", age: 230, gender: .male)
 myBot.gender
 myBot.fulProfile
 myBot.getOlder()
@@ -141,17 +158,17 @@ myAlien.age
 
 //Создать словарь, который хранит все типы данных, которые есть, а ключ должен быть только строка (воспользоваться enum для типов данных)
 enum TypesOfData {
-    case string
-    case int
-    case character
-    case double
-    case float
-    case bool
-    case uint
+    case string (String)
+    case int (Int)
+    case character (Character)
+    case double (Double)
+    case float (Float)
+    case bool (Bool)
+    case uint (UInt)
 }
 
-var dictOfTypes: [String: TypesOfData] = ["String": TypesOfData.string, "Int": TypesOfData.int, "Character": TypesOfData.character, "Double": TypesOfData.double, "Float": TypesOfData.float, "Bool": TypesOfData.bool, "UInt": TypesOfData.uint]
-
+var dictOfTypes: [String: TypesOfData] = ["String": TypesOfData.string ("String"), "Int": TypesOfData.int(20), "Character": TypesOfData.character("A"), "Double": TypesOfData.double(23.8), "Float": TypesOfData.float(20.11122), "Bool": TypesOfData.bool(true), "UInt": TypesOfData.uint(1)]
+//Без указания конкретных значений не получается
 //мб я не понял задание
 class DictTypes {
     private var data: [String:TypesOfData] = [:]
@@ -165,5 +182,43 @@ class DictTypes {
     }
 }
 var dic = DictTypes()
-dic["String"] = TypesOfData.string
+dic["String"] = TypesOfData.string ("sas") //та же история, не получается без присваивания значения
 dic["String"]
+
+//давай метод напишем, который будет такой словарь принимать, и распечатывать только численные значения
+
+func getRawValue (a: TypesOfData) -> Any {
+    switch a {
+    case .string(let stringValue):
+        return stringValue
+    case .bool(let boolValue):
+        return boolValue
+    case.character(let charValue):
+        return charValue
+    case .double(let doubleValue):
+        return doubleValue
+    case .float(let floatValue):
+        return floatValue
+    case .int(let intValue):
+        return intValue
+    case .uint(let uintValue):
+        return uintValue
+    }
+}
+
+func printAllNumbers (dict: [String: TypesOfData]) {
+    for (_, value) in dict {
+        if let val = getRawValue(a: value) as? Int { //я думал сделать приведения всех численныъ типов к Double, т.к. все остальные численные типы можно привести к нему
+            print(val)
+        } else if let val = getRawValue(a: value) as? Double {
+            print(val)
+        } else if let val = getRawValue(a: value) as? Float {
+            print(val)
+        } else if let val = getRawValue(a: value) as? UInt {
+            print(val)
+        }
+    }
+}
+
+printAllNumbers(dict: dictOfTypes)
+
